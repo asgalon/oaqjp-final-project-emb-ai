@@ -13,20 +13,22 @@ def fetch_backend_result():
     '''
     text_to_analyze = request.args.get('textToAnalyze')
 
+    # well, of course I do not send the request if the text is missing...
     if text_to_analyze is None or len(text_to_analyze.strip()) == 0:
-        return "Please enter some text."
+        return "Invalid text! Please try again!"
 
     result = emotion_detector(text_to_analyze)
 
-    if 'error' in result:
-        return result['error']
+    dominant = result.get('dominant_emotion','./.')
+
+    if dominant is None:
+        return 'Invalid text! Please try again!'
 
     anger = result.get('anger','./.')
     disgust = result.get('disgust','./.')
     fear = result.get('fear','./.')
     joy = result.get('joy','./.')
     sadness = result.get('sadness','./.')
-    dominant = result.get('dominant_emotion','./.')
 
     return f"""
     For the given statement, the system response is 
@@ -47,4 +49,3 @@ def index():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-    

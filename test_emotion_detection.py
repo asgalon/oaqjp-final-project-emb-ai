@@ -20,8 +20,8 @@ class TestEmotionDetection(unittest.TestCase):
         self.assertNotEqual(response_json, None)
         self.assertTrue(isinstance(response_json, dict))
 
-        self.assertTrue('error' in response_json)
-        self.assertEqual(response_json['error'], "Please enter text")
+        self.assertTrue('dominant_emotion' in response_json)
+        self.assertEqual(response_json['dominant_emotion'], None)
 
     def test_project_test_cases(self):
         ''' Task 5 test cases.
