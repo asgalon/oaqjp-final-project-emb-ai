@@ -46,6 +46,5 @@ class TestEmotionDetection(unittest.TestCase):
         self.assertTrue('dominant_emotion' in response_json)
         self.assertEqual(response_json['dominant_emotion'],expected_dominant)
 
-
 if __name__ == '__main__':
     unittest.main()
