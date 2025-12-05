@@ -1,7 +1,7 @@
 
 ''' Testing emotion_detection module '''
 import unittest
-from emotion_detection import emotion_detector
+from EmotionDetection import emotion_detector
 
 class TestEmotionDetection(unittest.TestCase):
     ''' emotion detection test cases '''
